@@ -17,10 +17,13 @@ public class ProductService {
 	@Autowired
 	private ProductRepository repository;
 	
+	
 	@Transactional(readOnly = true)
 	public List<ProductDTO> findAll(){
 		List<Product> list = repository.findAllByOrderByNameAsc();
 		return list.stream().map(x -> new ProductDTO(x)).collect(Collectors.toList());
 	}
+	
+	
 
 }
